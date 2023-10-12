@@ -7,7 +7,7 @@ class NamaPesawat(models.Model):
     name = fields.Char(string='Name', required=True)
     reference = fields.Char(string='Order Reference', required=True, copy=False, readonly=True, 
                             default=lambda self: _('New'))
-    age = fields.Integer(string='Age')
+    age = fields.Integer(string='age')
     tanggal = fields.Date(string='tanggal')
     gender = fields.Selection([
         ('Male', 'male'),
@@ -30,7 +30,13 @@ class NamaPesawat(models.Model):
         ('jakarta', 'Jakarta'),
         ('bali', 'Bali')],
         required=True, default='bandung')
-    maskapai =fields.Text(string='Maskapai')
+    maskapai = fields.Selection([
+        ('garuda', 'Garuda'),
+        ('lion_air', 'Lion_Air'),
+        ('air_asia', 'Air_Asia'),
+        ('super_air_jet', 'Super_Air_Jet'),
+        ('sriwijaya_air', 'Sriwijaya_Air')],
+        required=True, default='garuda')
     kelas_pesawat = fields.Selection([
         ('economy_class', 'Economy_Class'),
         ('bisnis_class', 'Bisnis_Class'),
